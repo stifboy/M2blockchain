@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+  <system>
+    <section id="payment" translate="label" sortOrder="400" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+      <label>Payment Methods</label>
+      <tab>sales</tab>
+      <resource>Appmerce_Bitcoin::system_config</resource>
+      <group id="bitcoin" translate="label" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Bitcoin (JSON-RPC)</label>
+        <comment>
+          Free extension by &lt;a href="http://www.appmerce.com/" title="Applications for Ecommerce" style="color: #EA7601"&gt;Appmerce&lt;/a&gt; | &lt;a href="http://www.appmerce.com/get-support" title="Get support for this extension" style="color: #EA7601"&gt;Get Support&lt;/a&gt;
+        </comment>
+        <field id="active" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1">
+          <label>Enabled</label>
+          <comment>
+            Before enabling check that you can access a secured Bitcoin wallet using JSON-RPC.
+          </comment>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="title" translate="label" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+          <label>Title</label>
+        </field>
+        <field id="order_status" translate="label" sortOrder="30" type="select" showInDefault="1" showInWebsite="1">
+          <label>New Order Status</label>
+          <source_model>Magento\Config\Model\Config\Source\Order\Status\NewStatus</source_model>
+        </field>
+        <field id="pending_status" translate="label" sortOrder="40" type="select" showInDefault="1" showInWebsite="1">
+          <label>Pending Payment Status</label>
+          <source_model>Appmerce\Bitcoin\Model\Source\Pendingpayment</source_model>
+        </field>
+        <field id="processing_status" translate="label" sortOrder="50" type="select" showInDefault="1" showInWebsite="1">
+          <label>Processing Order Status</label>
+          <source_model>Magento\Config\Model\Config\Source\Order\Status\Processing</source_model>
+        </field>
+        <field id="confirmations" translate="label comment" sortOrder="55" type="select" showInDefault="1" showInWebsite="1">
+          <label>Minimum Confirmations</label>
+          <comment>
+            Number of confirmations from the Bitcoin network before accepting a transaction.
+          </comment>
+          <source_model>Appmerce\Bitcoin\Model\Source\Confirmations</source_model>
+        </field>
+        <field id="period" translate="label comment" sortOrder="65" type="select" showInDefault="1" showInWebsite="1">
+          <label>Exchange Rate Cache Period</label>
+          <comment>
+            Specify how often to refresh exchange rates from &lt;a href="http://www.coindesk.com/price/" target="_blank"&gt;Coindesk.com&lt;/a&gt;.
+          </comment>
+          <source_model>Appmerce\Bitcoin\Model\Source\Period</source_model>
+        </field>
+        <field id="rpc_ptcl" translate="label comment" sortOrder="70" type="select" showInDefault="1" showInWebsite="1">
+          <label>JSON-RPC SSL</label>
+          <comment>
+            Enable to use SSL on the original client daemon. You must also enable this in &lt;a href="https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon" target="_blank"&gt;bitcoin.conf&lt;/a&gt;.
+          </comment>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="rpc_user" translate="label comment" sortOrder="75" type="text" showInDefault="1" showInWebsite="1">
+          <label>JSON-RPC Username</label>
+          <comment>
+            Blockchain.info calls this the &lt;em&gt;Wallet Identifier&lt;/em&gt;.
+          </comment>
+        </field>
+        <field id="rpc_pass" translate="label comment" sortOrder="80" type="obscure" showInDefault="1" showInWebsite="1">
+          <label>JSON-RPC Password</label>
+          <comment>
+            Blockchain.info calls this the &lt;em&gt;Main Password&lt;/em&gt;. Important: the password cannot have special characters such as $, % or ?
+          </comment>
+          <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+        </field>
+        <field id="rpc_host" translate="label comment" sortOrder="85" type="text" showInDefault="1" showInWebsite="1">
+          <label>JSON-RPC Hostname</label>
+          <comment>
+            Enter &lt;em&gt;127.0.0.1&lt;/em&gt; for localhost. Enter &lt;em&gt;rpc.blockchain.info&lt;/em&gt; for Blockchain.info wallets.
+          </comment>
+        </field>
+        <field id="rpc_port" translate="label comment" sortOrder="90" type="text" showInDefault="1" showInWebsite="1">
+          <label>JSON-RPC Port</label>
+          <comment>
+            Enter &lt;em&gt;8332&lt;/em&gt; for default bitcoind. For Blockchain.info enter &lt;em&gt;443&lt;/em&gt; with SSl, &lt;em&gt;80&lt;/em&gt; without SSL.
+          </comment>
+        </field>
+        <field id="wallet_pass" translate="label comment" sortOrder="100" type="obscure" showInDefault="1" showInWebsite="1">
+          <label>Bitcoin Wallet Passphrase</label>
+          <comment>
+            Optional. Required for keypoolrefill. Not needed for Blockchain.info wallets. Important: the password cannot have special characters such as $, % or ?
+          </comment>
+          <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+        </field>
+        <field id="debug_flag" translate="label comment" sortOrder="140" type="select" showInDefault="1" showInWebsite="1">
+          <label>Debug Mode</label>
+          <comment>
+            See database table &lt;em&gt;bitcoin_api_debug&lt;/em&gt;.
+          </comment>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="order_email" translate="label" sortOrder="150" type="select" showInDefault="1" showInWebsite="1">
+          <label>Send Order Email</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="invoice_create" translate="label" sortOrder="160" type="select" showInDefault="1" showInWebsite="1">
+          <label>Create Invoice</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="invoice_email" translate="label" sortOrder="170" type="select" showInDefault="1" showInWebsite="1">
+          <label>Send Invoice Email</label>
+          <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+        </field>
+        <field id="allowspecific" translate="label" sortOrder="180" type="allowspecific" showInDefault="1" showInWebsite="1">
+          <label>Payment from Applicable Countries</label>
+          <source_model>Magento\Config\Model\Config\Source\Payment\Allspecificcountries</source_model>
+        </field>
+        <field id="specificcountry" translate="label" sortOrder="190" type="multiselect" showInDefault="1" showInWebsite="1">
+          <label>Payment from Specific Countries</label>
+          <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+        </field>
+        <field id="min_order_total" translate="label" sortOrder="200" type="text" showInDefault="1" showInWebsite="1">
+          <label>Minimum Order Total</label>
+        </field>
+        <field id="max_order_total" translate="label" sortOrder="210" type="text" showInDefault="1" showInWebsite="1">
+          <label>Maximum Order Total</label>
+        </field>
+        <field id="sort_order" translate="label" sortOrder="220" type="text" showInDefault="1" showInWebsite="1">
+          <label>Sort Order</label>
+        </field>
+      </group>
+    </section>
+  </system>
+</config>

@@ -1,0 +1,38 @@
+<?php
+/**
+ * Appmerce - Applications for Ecommerce
+ * http://www.appmerce.com
+ *
+ * @extension   Bitcoin
+ * @type        Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    Magento
+ * @package     Appmerce_Bitcoin
+ * @copyright   Copyright (c) 2011-2014 Appmerce (http://www.appmerce.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<div class="page-title category-title">
+    <h1><?php echo __('Confirm Bitcoin Transaction'); ?></h1>
+</div>
+<p>
+    <a href="<?php echo $this->getBitcoin(); ?>">
+        <img src="<?php echo $this->getQr(175); ?>" style="float: left; margin-right: 10px;" />
+    </a>
+    <div style="padding: 8px; height: 184px;">
+        <form name="bitcoin" id="bitcoin_review_form" action="<?php echo $this->getFormAction(); ?>" method="post" accept-charset="UTF-8">
+            <p><?php echo __('Please send exactly %1 BTC (%2) to:', $this->getAmount(), $this->getPrice()); ?>
+            <br /><pre><?php echo $this->getAddress(); ?></pre></p>
+            
+            <input type="hidden" name="increment_id" value="<?php $this->_getOrder()->getIncrementId(); ?>" />
+            <button type="submit" title="<?php echo __('Confirm Transaction'); ?>" class="button"><span><span><?php echo __('Confirm Transaction'); ?></span></span></button>
+        </form>
+    </div>
+</p>

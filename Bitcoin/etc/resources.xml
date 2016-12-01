@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/resources.xsd">
+  <resource name="bitcoin_setup" extends="core_setup"/>
+  <resource name="bitcoin_write" extends="core_write"/>
+  <resource name="bitcoin_read" extends="core_read"/>
+</config>

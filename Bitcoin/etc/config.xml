@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <payment>
+      <bitcoin>
+        <title>Bitcoin</title>
+        <active>0</active>
+        <model>bitcoin/api</model>
+        <order_status>pending</order_status>
+        <pending_status>pending_payment</pending_status>
+        <processing_status>processing</processing_status>
+        <allowspecific>0</allowspecific>
+        <confirmations>6</confirmations>
+        <period>21600</period>
+        <rpc_port>8332</rpc_port>
+        <rpc_host>127.0.0.1</rpc_host>
+        <order_email>1</order_email>
+      </bitcoin>
+    </payment>
+  </default>
+</config>
